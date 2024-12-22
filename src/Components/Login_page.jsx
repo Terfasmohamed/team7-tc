@@ -68,6 +68,7 @@ const LoginPage = () => {
         <div className='flex flex-col  p-2'>
           <label>Password:</label>
           <input
+          
             type="password"
             className=' border-black border-2  rounded-lg '
             value={formData.password}
