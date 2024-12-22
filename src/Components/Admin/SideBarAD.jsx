@@ -42,7 +42,7 @@ const Sidebar = ({ setActiveTab }) => {
       <div
         className={`${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed top-0 left-0 w-64 bg-[#1D5C96] h-screen text-white p-6 z-50 lg:relative lg:translate-x-0 lg:block lg:w-64 lg:h-screen transition-transform duration-300`}
+        } fixed top-0 left-0 w-64 bg-[#1D5C96] h-screen text-white p-6 z-50 lg:fixed lg:translate-x-0 lg:block lg:w-64 lg:h-screen transition-transform duration-300`}
       >
         <div className="flex items-center mb-6">
           <img

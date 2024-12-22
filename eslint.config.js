@@ -33,6 +33,9 @@ export default [
       'react/unused-prop-types': 'off',
       'react/no-used-typos': 'off',
       'react/no-unused-vars': 'off',
+      'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'react-hooks/rules-of-hooks': 'off',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

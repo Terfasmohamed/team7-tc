@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { FaTachometerAlt, FaUser, FaClipboardList, FaSignOutAlt } from 'react-icons/fa';
-import { Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ setActiveTab }) => {
-  const [user, setUser] = useState({ name: '', email: '' });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar toggle
+  const [user, setUser] = useState({
+    name: 'Jane Cooper',
+    email: 'jane.cooper@example.com',
+    photo: 'https://images.app.goo.gl/a4c3mVf6BWA2K8bo8' // Example profile picture
+  });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const navigate = useNavigate(); // Use navigate for redirection
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,10 +26,12 @@ const Sidebar = ({ setActiveTab }) => {
     setActiveTab(tab);
     setIsSidebarOpen(false); // Close sidebar on navigation (mobile)
   };
+
   const handleLogout = () => {
     // Redirect to the login page
-    Navigate("/src/Pages/Login_page.jsx");
+    navigate("/login"); // Update path as necessary
   };
+
   return (
     <div>
       {/* Hamburger Icon for Mobile */}
@@ -46,7 +53,7 @@ const Sidebar = ({ setActiveTab }) => {
       >
         <div className="flex items-center mb-6">
           <img
-            src="path/to/profile/picture.jpg" // Replace with actual image source
+            src={user.photo} // User's profile picture
             alt="Profile"
             className="w-12 h-12 rounded-full mr-4"
           />
@@ -64,13 +71,17 @@ const Sidebar = ({ setActiveTab }) => {
             <FaTachometerAlt className="mr-2" />
             Dashboard
           </button>
-          <button
-            className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
-            onClick={() => handleNavClick('accountInfo')}
-          >
-            <FaUser className="mr-2" />
-            Account Info
-          </button>
+          
+          <Link to={"/"}>
+            <button
+              className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
+              onClick={() => handleNavClick('accountInfo')}
+            >
+              <FaUser className="mr-2" />
+              Account Info
+            </button>
+          </Link>
+          
           <button
             className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
             onClick={() => handleNavClick('leaveRequest')}
@@ -78,11 +89,12 @@ const Sidebar = ({ setActiveTab }) => {
             <FaClipboardList className="mr-2" />
             Leave Request
           </button>
-         
         </nav>
 
-        <button className="mt-64 flex items-center text-white py-2 px-4 rounded w-full hover:bg-gray-700 transition"
-        onClick={handleLogout}>
+        <button
+          className="mt-64 flex items-center text-white py-2 px-4 rounded w-full hover:bg-gray-700 transition"
+          onClick={handleLogout}
+        >
           <FaSignOutAlt className="mr-2" />
           Log out
         </button>

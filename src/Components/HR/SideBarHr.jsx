@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { FaTachometerAlt, FaUser, FaClipboardList, FaSignOutAlt, FaUsersCog, FaTasks } from 'react-icons/fa'; // Import FaTasks for Assign Tasks
-import { useNavigate } from 'react-router-dom'; // Uncomment this if you decide to use navigate
+import { FaTachometerAlt, FaUser, FaClipboardList, FaSignOutAlt, FaUsersCog, FaTasks } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const SideBarHr = ({ setActiveTab }) => {
-  const [user, setUser] = useState({ name: '', email: '' });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State to manage sidebar toggle
-  // const navigate = useNavigate(); // Uncomment if using navigate
+  const [user, setUser] = useState({ name: 'Jane Cooper', email: 'jane.cooper@example.com' }); // Example user data
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -44,11 +43,11 @@ const SideBarHr = ({ setActiveTab }) => {
       <div
         className={`${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed top-0 left-0 w-64 bg-[#1D5C96] h-screen text-white p-6 z-50 lg:relative lg:translate-x-0 lg:block lg:w-64 lg:h-screen transition-transform duration-300`}
+        } fixed top-0 left-0 bottom-0 bg-[#1D5C96] h-screen text-white p-6 z-50 lg:fixed lg:translate-x-0 lg:block lg:w-64 lg:h-screen transition-transform duration-300`}
       >
         <div className="flex items-center mb-6">
           <img
-            src="path/to/profile/picture.jpg" // Replace with actual image source
+            src="https://images.app.goo.gl/a4c3mVf6BWA2K8bo8" // Example profile picture
             alt="Profile"
             className="w-12 h-12 rounded-full mr-4"
           />
@@ -66,13 +65,15 @@ const SideBarHr = ({ setActiveTab }) => {
             <FaTachometerAlt className="mr-2" />
             Dashboard
           </button>
-          <button
-            className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
-            onClick={() => handleNavClick('accountInfo')}
-          >
-            <FaUser className="mr-2" />
-            Account Info
-          </button>
+          <Link to={"/"}>
+            <button
+              className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
+              onClick={() => handleNavClick('accountInfo')}
+            >
+              <FaUser className="mr-2" />
+              Account Info
+            </button>
+          </Link>
           <button
             className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
             onClick={() => handleNavClick('leaveRequest')}
@@ -91,14 +92,15 @@ const SideBarHr = ({ setActiveTab }) => {
             className="flex items-center w-full text-left py-2 px-4 rounded hover:bg-blue-700 focus:bg-blue-800 transition mb-2"
             onClick={() => handleNavClick('AssignTasks')}
           >
-            <FaTasks className="mr-2" /> {/* Updated icon for Assign Tasks */}
+            <FaTasks className="mr-2" />
             Assign Tasks
           </button>
         </nav>
 
-        <button 
-          className="mt-64 flex items-center text-white py-2 px-4 rounded w-full hover:bg-gray-700 transition"
-          onClick={handleLogout}>
+        <button
+          className="mt-50 flex items-center text-white py-2 px-4 rounded w-full hover:bg-gray-700 transition"
+          onClick={handleLogout}
+        >
           <FaSignOutAlt className="mr-2" />
           Log out
         </button>

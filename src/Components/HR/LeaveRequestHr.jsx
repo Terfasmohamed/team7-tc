@@ -31,7 +31,7 @@ const LeaveRequestPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-gray-50">
+    <div className="flex flex-col lg:flex-row h-screen bg-gray-50 lg:ml-64 ">
       {/* Employee List with Glassmorphism Effect */}
       <div className="bg-white bg-opacity-30 backdrop-blur-lg w-full lg:w-1/3 p-6 shadow-md rounded-lg">
         <h2 className="text-xl font-bold mb-4">Leave Requests</h2>

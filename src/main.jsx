@@ -9,3 +9,10 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+/*import Employee from './Pages/Employee';
+import HR from './Pages/HR'
+import SideBarHr from './Components/HR/SideBarHr';
+import Admin from './Pages/Admin'
+import { Router, useNavigate } from 'react-router-dom';
+import EditProfile from './Components/Employee/EditProfile';
+import Login_page from './Components/Login_page';*/

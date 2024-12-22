@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import SideBarAD from '../Components/Admin/SideBarAD';
-
+import DashboradAD from '../Components/Admin/DashboradAD';
+import UserForm from '../Components/Admin/CreateAccount';
 const Employee = () => {
     const [activeTab, setActiveTab] = useState("dashboard");
     function tabToRender() {
         switch (activeTab) {
         case "dashboard":
-            return <div>Dashboard</div>
+            return <DashboradAD/>
         case "createAccount":
-            return <div>Create Account</div>
+            return <UserForm/>
         default:
-            return <div>Dashboard</div>
+            return <DashboradAD/>
         }
     }
     console.log(activeTab);
